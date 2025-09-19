@@ -4,6 +4,15 @@
 #include "queue.h"
 
 
+
+int max(int a, int b){
+	
+	if(a>=b)return a;
+	return b;
+
+}
+
+
 Node* build(Node* root){
 
 	if(!root){
@@ -152,7 +161,23 @@ void postorder(Node* root){
 }
 
 
+int height(Node* root){
+	if(!root)return 0;
+	
+	return max(height(root->left), height(root->right))+1;
 
+}
+
+
+int diameter(Node* root){
+
+	if(!root)return 0;
+	
+	int right_height = height(root->right);
+	int left_height = height(root->left);
+	
+	return max((right_height+left_height+1) , max(diameter(root->left), diameter(root->right) ) );
+}
 
 
 

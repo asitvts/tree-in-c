@@ -30,5 +30,12 @@ void preorder(Node* root);
 void postorder(Node* root);
 
 
+int height(Node* root);
+
+
+int diameter(Node* root);
+
+
+
 
 #endif 

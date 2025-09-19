@@ -21,6 +21,14 @@ int main(){
 	printf("postorder\n");
 	postorder(root);
 	nl
+	
+	printf("height of the tree is : %d\n", height(root));
+	
+	nl 
+	
+	printf("diameter of the tree is : %d", diameter(root));
+	
+	nl
 
 	return 0;
 }
