@@ -20,20 +20,20 @@ Node* build(Node* root){
 	
 	Q* q = calloc(1, sizeof(Q));
 	
-	init(q,1000);
+	init(&q,1000);
 	
-	push(q,root);
+	push(&q,root);
 	
 	
-	while(getqsize(q)>0){
+	while(getqsize(&q)>0){
 	
-		int size = getqsize(q);
+		int size = getqsize(&q);
 		
 		
 		while(size--){
 		
-			Node* node = front_ele(q);
-			pop(q);
+			Node* node = front_ele(&q);
+			pop(&q);
 			
 			
 			if(!node)continue;
@@ -57,8 +57,8 @@ Node* build(Node* root){
 			}
 			
 				
-			push(q, node->left);
-			push(q, node->right);
+			push(&q, node->left);
+			push(&q, node->right);
 			
 		}
 	
@@ -77,19 +77,19 @@ void bfs(Node* root){
 
 	Q* q = calloc(1, sizeof(Q));
 	
-	init(q,1000);
+	init(&q,1000);
 	
-	push(q,root);
+	push(&q,root);
 	
-	while(getqsize(q)>0){
+	while(getqsize(&q)>0){
 	
-		int size = getqsize(q);
+		int size = getqsize(&q);
 		
 		
 		while(size--){
 		
-			Node* node = front_ele(q);
-			pop(q);
+			Node* node = front_ele(&q);
+			pop(&q);
 			
 			
 			if(node)printf("%d ", node->val);
@@ -97,8 +97,8 @@ void bfs(Node* root){
 			
 			if(node){
 				
-				push(q, node->left);
-				push(q, node->right);
+				push(&q, node->left);
+				push(&q, node->right);
 			
 			}
 			
