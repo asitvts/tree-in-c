@@ -57,13 +57,14 @@ Node* build(Node* root){
 			}
 			
 				
-			push(q, node->left);
-			push(q, node->right);
+			if(node->left)push(q, node->left);
+			if(node->right)push(q, node->right);
 			
 		}
 	
 	}
-	
+	free(q->arr);
+	q->arr=NULL;
 	free(q);
 	q=NULL;
 	
@@ -97,8 +98,8 @@ void bfs(Node* root){
 			
 			if(node){
 				
-				push(q, node->left);
-				push(q, node->right);
+				if(node->left)push(q, node->left);
+				if(node->right)push(q, node->right);
 			
 			}
 			
@@ -108,10 +109,15 @@ void bfs(Node* root){
 	
 	}
 	
+	free(q->arr);
+	q->arr=NULL;
 	free(q);
 	q=NULL;
 
 }
+
+
+
 
 
 

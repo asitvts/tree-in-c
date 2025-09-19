@@ -16,21 +16,28 @@ void init(Q* q, int cap){
 int getqsize(Q* q){
 	
 	if(q->back==-1)return 0;
-	return (q->back-q->front)+1;
+	
+	if(q->back >= q->front)return (q->back - q->front)+1;
+	else return (q->back+1)+(q->capacity-q->front);
 }
 
 void push(Q* q, Node* node){
-
-	if(q->back == q->capacity-1){
-		printf("queue is already full can't push\n");
-		return;
-	}	
 	
-	q->back++;
+	if(q->back==-1 && q->front==-1){
+		q->back=0;
+		q->front=0;
+		q->arr[q->back]=node;
+		return;
+	}
+	int next_ind=(q->back+1)%q->capacity;
+	if(q->front==next_ind){
+		printf("cannot push more, queue already full\n");
+		return;
+	}
+	q->back=next_ind;
 	q->arr[q->back]=node;
 	
-	if(q->back==0)q->front=0;
-	
+	return;
 }
 
 Node* front_ele(Q* q){
@@ -55,13 +62,14 @@ void pop(Q* q){
 	
 	q->arr[q->front]=NULL;
 	
-	q->front++;
-	if(q->front>q->back){
+	if(q->front == q->back){
 		q->front=-1;
 		q->back=-1;
+		return;
 	}
 	
-
+	q->front = (q->front+1)%q->capacity;
+	
 }
 
 
