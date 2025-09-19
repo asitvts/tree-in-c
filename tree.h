@@ -23,6 +23,12 @@ Node* build(Node* root);
 
 void bfs(Node* root);
 
+void inorder(Node* root);
+
+void preorder(Node* root);
+
+void postorder(Node* root);
+
 
 
 #endif 

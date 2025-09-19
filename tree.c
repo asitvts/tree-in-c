@@ -116,6 +116,40 @@ void bfs(Node* root){
 
 }
 
+void inorder(Node* root){
+	
+	if(!root){
+		return;
+	}
+	
+	inorder(root->left);
+	printf("%d ", root->val);
+	inorder(root->left);
+}
+
+void preorder(Node* root){
+	
+	if(!root){
+		return;
+	}
+	
+	printf("%d ", root->val);
+	preorder(root->left);
+	preorder(root->left);
+}
+
+
+
+void postorder(Node* root){
+	
+	if(!root){
+		return;
+	}
+	
+	postorder(root->left);
+	postorder(root->left);
+	printf("%d ", root->val);
+}
 
 
 
