@@ -29,6 +29,18 @@ int main(){
 	printf("diameter of the tree is : %d", diameter(root));
 	
 	nl
+	
+	leftView(root);
+	
+	nl
+	
+	rightView(root);
+	
+	nl
+	
+	morrisTraversal(root);
+	
+	nl
 
 	return 0;
 }

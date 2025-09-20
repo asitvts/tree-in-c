@@ -35,7 +35,11 @@ int height(Node* root);
 
 int diameter(Node* root);
 
+void leftView(Node* root);
 
+void rightView(Node* root);
+
+void morrisTraversal(Node* root);
 
 
 #endif 
