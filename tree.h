@@ -13,6 +13,7 @@ typedef struct Node{
 	int val;
 	struct Node* left;
 	struct Node* right;
+	int hd;
 
 }Node;
 
@@ -41,5 +42,16 @@ void rightView(Node* root);
 
 void morrisTraversal(Node* root);
 
+void top_view(Node* root);
+
+
+void bot_view(Node* root);
+
+void target_pathsum(Node* root, const int t);
+
 
 #endif 
+
+
+
+

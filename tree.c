@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "tree.h"
 #include "queue.h"
 
@@ -291,12 +292,173 @@ void morrisTraversal(Node* root){
 			
 			to_set_null->left=NULL;		// set the linkage from root to its left to NULL to avoid repition while travelling
 			
-		
+
 		}
 		
 	}
 	
 }
+
+
+void top_view(Node* root){
+	
+	printf("printing the top view of the tree\n");
+	
+	if(!root)return;
+	
+	int seen[1000];
+	memset(seen,-1,sizeof(seen));
+
+	Q* q = calloc(1, sizeof(Q));
+	
+	init(q,1000);
+	
+	root->hd=500;
+	int min_hd=500,max_hd=500;
+	
+	push(q,root);
+	
+	while(getqsize(q)>0){
+	
+		int size = getqsize(q);
+		
+		
+		while(size--){
+		
+			Node* node = front_ele(q);
+			pop(q);
+			
+			int ind = node->hd;
+			if(seen[ind]==-1){
+				seen[ind]=node->val;
+			}
+				
+			if(node->left){
+				node->left->hd=ind-1;
+				if(ind-1<min_hd)min_hd=ind-1;
+				push(q, node->left);
+			}
+			
+			if(node->right){
+				node->right->hd=ind+1;
+				if(ind+1>max_hd)max_hd=ind+1;
+				push(q, node->right);
+			}
+			
+		}
+	
+	}
+	
+	free(q->arr);
+	q->arr=NULL;
+	free(q);
+	q=NULL;
+	
+	for(int i=min_hd; i<=max_hd; i++){
+		if(seen[i]!=-1){
+			printf("%d ",seen[i]);
+		}
+	}
+
+}
+
+
+
+
+void bot_view(Node* root){
+	
+	printf("printing the bottom view of the tree\n");
+	
+	if(!root)return;
+	
+	int seen[1000];
+	memset(seen,-1,sizeof(seen));
+
+	Q* q = calloc(1, sizeof(Q));
+	
+	init(q,1000);
+	
+	root->hd=500;
+	int min_hd=500,max_hd=500;
+	
+	push(q,root);
+	
+	while(getqsize(q)>0){
+	
+		int size = getqsize(q);
+		
+		
+		while(size--){
+		
+			Node* node = front_ele(q);
+			pop(q);
+			
+			int ind = node->hd;
+			seen[ind]=node->val;
+			
+				
+			if(node->left){
+				node->left->hd=ind-1;
+				if(ind-1<min_hd)min_hd=ind-1;
+				push(q, node->left);
+			}
+			
+			if(node->right){
+				node->right->hd=ind+1;
+				if(ind+1>max_hd)max_hd=ind+1;
+				push(q, node->right);
+			}
+			
+		}
+	
+	}
+	
+	free(q->arr);
+	q->arr=NULL;
+	free(q);
+	q=NULL;
+	
+	for(int i=min_hd; i<=max_hd; i++){
+		if(seen[i]!=-1){
+			printf("%d ",seen[i]);
+		}
+	}
+
+}
+
+
+
+
+int find(Node* root, const int target, int curr_sum) {
+    if (!root) return 0; 
+
+    curr_sum += root->val;
+
+    // Check if this is a leaf node
+    if (!root->left && !root->right) {
+        return curr_sum == target;
+    }
+
+    // Recurse on children
+    return find(root->left, target, curr_sum) || find(root->right, target, curr_sum);
+}
+
+
+void target_pathsum(Node* root, const int t){
+
+	if(find(root,t,0)){
+		printf("that target pathsum exists\n");
+	}
+	else{
+		printf("no such target path sum available\n");
+	}
+
+}
+
+
+
+
+
 
 
 

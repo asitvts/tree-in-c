@@ -36,11 +36,31 @@ int main(){
 	
 	rightView(root);
 	
+	
 	nl
 	
-	morrisTraversal(root);
+	top_view(root);
+	
+	nl
+	
+	bot_view(root);
+	
+	nl
+	
+	target_pathsum(root,3);
+	target_pathsum(root,4);
+	target_pathsum(root,1);
 	
 	nl
 
+
+	morrisTraversal(root);
+	
+	nl
+	
+	
 	return 0;
 }
+
+
+
