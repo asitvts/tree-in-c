@@ -300,6 +300,90 @@ void morrisTraversal(Node* root){
 }
 
 
+
+
+
+
+void morrisTraversal2(Node* current){
+
+	printf("printing the morris traversal of tree without breaking the structure of tree\n");
+	
+	
+	Node* root=current;
+	Node* pre;
+	
+	while(root){
+	
+		if(!root->left){
+			printf("%d ", root->val);
+			root=root->right;
+		}
+		else{
+					
+			pre=root->left;
+			while(pre->right && pre->right!=root)pre=pre->right;
+			
+			
+			if(!pre->right){
+				pre->right=root;
+				root=root->left;
+			}
+			
+			else{
+				pre->right=NULL;
+				printf("%d ", root->val);
+				root=root->right;
+			}
+			
+
+		}
+		
+	}
+	
+}
+
+
+
+
+void morrisTraversalPreorder(Node* current){
+
+	printf("printing the morris(Preorder) traversal of tree without breaking the structure of tree\n");
+	
+	
+	Node* root=current;
+	Node* pre;
+	
+	while(root){
+	
+		if(!root->left){
+			printf("%d ", root->val);
+			root=root->right;
+		}
+		else{
+					
+			pre=root->left;
+			while(pre->right && pre->right!=root)pre=pre->right;
+			
+			
+			if(!pre->right){
+				pre->right=root;
+				printf("%d ", root->val);
+				root=root->left;
+			}
+			
+			else{
+				pre->right=NULL;
+				root=root->right;
+			}
+			
+
+		}
+		
+	}
+	
+}
+
+
 void top_view(Node* root){
 	
 	printf("printing the top view of the tree\n");

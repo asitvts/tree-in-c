@@ -49,6 +49,11 @@ void bot_view(Node* root);
 
 void target_pathsum(Node* root, const int t);
 
+void morrisTraversal2(Node* current);
+
+
+void morrisTraversalPreorder(Node* current);
+
 
 #endif 
 

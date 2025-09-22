@@ -54,10 +54,14 @@ int main(){
 	nl
 
 
-	morrisTraversal(root);
+	morrisTraversal2(root);
 	
 	nl
 	
+	
+	morrisTraversalPreorder(root);
+	
+	nl
 	
 	return 0;
 }
