@@ -55,6 +55,9 @@ void morrisTraversal2(Node* current);
 void morrisTraversalPreorder(Node* current);
 
 
+void boundary(Node* root);
+
+
 #endif 
 
 

@@ -63,6 +63,10 @@ int main(){
 	
 	nl
 	
+	boundary(root);
+	
+	nl
+	
 	return 0;
 }
 

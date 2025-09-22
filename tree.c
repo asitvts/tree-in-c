@@ -541,6 +541,72 @@ void target_pathsum(Node* root, const int t){
 
 
 
+int isLeaf(Node* node){
+	return !node->left && !node->right;
+}
+
+void left(Node* root, int* ind, int arr[100]){
+	if (!root || isLeaf(root)) return;
+
+	arr[*ind] = root->val;
+	(*ind)++;
+
+	if (root->left) left(root->left, ind, arr);
+	else left(root->right, ind, arr);
+}
+
+void leaf(Node* root, int* ind, int arr[100]){
+	if (!root) return;
+
+	if (isLeaf(root)) {
+		arr[*ind] = root->val;
+		(*ind)++;
+	}
+
+	leaf(root->left, ind, arr);
+	leaf(root->right, ind, arr);
+}
+
+void right(Node* root, int* ind, int arr[100]){
+	if (!root || isLeaf(root)) return;
+
+	if (root->right) right(root->right, ind, arr);
+	else right(root->left, ind, arr);
+
+	arr[*ind] = root->val;
+	(*ind)++;
+}
+
+void boundary(Node* root){
+	if (!root) return;
+
+	int arr[100];
+	int ind = 0;
+
+	if (!isLeaf(root)) {
+		arr[ind++] = root->val;
+	}
+
+	left(root->left, &ind, arr);
+	leaf(root, &ind, arr);
+
+
+	int right_arr[100];
+	int right_ind = 0;
+	right(root->right, &right_ind, right_arr);
+
+	
+	for (int i = right_ind - 1; i >= 0; i--) {
+		arr[ind++] = right_arr[i];
+	}
+
+	for (int i = 0; i < ind; i++) {
+		printf("%d ", arr[i]);
+	}
+
+}
+
+
 
 
 
